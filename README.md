@@ -1,2 +1,3 @@
 # SFML-C-
-Graphic projects with SFML-library
+Graphic project with SFML-library
+See examples (photos) in repository
