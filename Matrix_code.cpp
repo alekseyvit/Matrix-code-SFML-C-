@@ -64,42 +64,42 @@ public:
     void drawFallingLetter(sf::RenderWindow& window) {
         window.draw(_text);
     }
-    void moveFallingLetter(sf::RenderWindow& window, float sec) {
-        //float half_window_y = window.getSize().y / 2;
-        //        float delta_time = (sec - this->time);
-        //        this->time = sec;
-        //        
-        //        float curr_y = y_0;
-        //        if ((GRAVITY * sec) * delta_time < MAX_DELTA_Y) {
-        //            //curr_y += GRAVITY * sec * sec / 2.0f;
-        //            
-        //            curr_y += (GRAVITY * sec) * delta_time;
-        //            cout << (GRAVITY * sec) * delta_time << endl;
-        //        }
-        //        else {
-        //            curr_y += MAX_DELTA_Y;
-        //            cout << (GRAVITY * sec) * delta_time << endl;
-        //        }
-        //        y_0 = curr_y;
-        //
-        //        while (curr_y > half_window_y) {
-        //            curr_y -= half_window_y;
-        //            this->setLetter(' ' + rand() % ALPHABET_CAPACITY);
-        //            sf::Vector2f offset(rand() % window.getSize().x, 0);
-        //            this->setPosition(offset);
-        //            this->setSize(20 + rand() % 40);
-        //        }
-        //        
-        //        Uint8 curr_alpha = 255 * (half_window_y - curr_y) / half_window_y;
-        //        _text.setFillColor(sf::Color(0, 255, 0, curr_alpha));
-        //        _text.setPosition(sf::Vector2f(_text.getPosition().x, curr_y));
-        //        window.draw(_text);
-    }
+    //void moveFallingLetter(sf::RenderWindow& window, float sec) {
+    //    float half_window_y = window.getSize().y / 2;
+    //            float delta_time = (sec - this->time);
+    //            this->time = sec;
+    //            
+    //            float curr_y = y_0;
+    //            if ((GRAVITY * sec) * delta_time < MAX_DELTA_Y) {
+    //                //curr_y += GRAVITY * sec * sec / 2.0f;
+    //                
+    //                curr_y += (GRAVITY * sec) * delta_time;
+    //                cout << (GRAVITY * sec) * delta_time << endl;
+    //            }
+    //            else {
+    //                curr_y += MAX_DELTA_Y;
+    //                cout << (GRAVITY * sec) * delta_time << endl;
+    //            }
+    //            y_0 = curr_y;
+    //    
+    //            while (curr_y > half_window_y) {
+    //                curr_y -= half_window_y;
+    //                this->setLetter(' ' + rand() % ALPHABET_CAPACITY);
+    //                sf::Vector2f offset(rand() % window.getSize().x, 0);
+    //                this->setPosition(offset);
+    //                this->setSize(20 + rand() % 40);
+    //            }
+    //            
+    //            Uint8 curr_alpha = 255 * (half_window_y - curr_y) / half_window_y;
+    //            _text.setFillColor(sf::Color(0, 255, 0, curr_alpha));
+    //            _text.setPosition(sf::Vector2f(_text.getPosition().x, curr_y));
+    //            window.draw(_text);
+    //}
     
 };
 
 void createNewLaeyer(std::vector<vector<Letter>>& matrix) {
-    cout << "createNewLaeyer" << endl;
+    //cout << "createNewLaeyer" << endl;
     for (int x = 0; x < matrix.size(); x++) {
         int y = 0;
         matrix[x][y] = Letter();
@@ -116,7 +116,7 @@ void createNewLaeyer(std::vector<vector<Letter>>& matrix) {
 }
 
 void moveMatrixOfLetters(std::vector<vector<Letter>>& matrix) {
-    cout << "moveMatrixOfLetters" << endl;
+    //cout << "moveMatrixOfLetters" << endl;
     for (int x = 0; x < matrix.size(); x++) {
         for (int y = matrix[0].size() - 1; y > 0; y--) {
             int pos_x = matrix[x][y]._pos_x;
@@ -129,7 +129,7 @@ void moveMatrixOfLetters(std::vector<vector<Letter>>& matrix) {
 }
 
 void makeAlphaRain(std::vector<vector<Letter>>& matrix) {
-    cout << "makeAlphaRain" << endl;
+    //cout << "makeAlphaRain" << endl;
     for (int x = 0; x < matrix.size(); x++) {
         for (int y = matrix[0].size() - 1; y >= 0; y--) {
             // init alpha chanell
@@ -182,7 +182,13 @@ int main()
     srand(time(0));
 
     Letter one_letter;
-    vector<vector<Letter>> matrix(window.getSize().x / one_letter._size_x);
+    int numLettersX = 0;
+    if (window.getSize().x % one_letter._size_x == 0.0)
+        numLettersX = window.getSize().x / one_letter._size_x;
+    else
+        numLettersX = window.getSize().x / one_letter._size_x + 1;
+    
+    vector<vector<Letter>> matrix(numLettersX);
     for (auto it = matrix.begin(); it < matrix.end(); ++it) {
         it->resize(window.getSize().y / one_letter._size_y);
     }
@@ -191,7 +197,6 @@ int main()
     for (int x = 0; x < matrix.size(); x++) {
         for (int y = 0; y < matrix[0].size(); y++) {
             // init alpha chanell
-            //matrix[x][y]._alpha = 0;//TEMP
             if (matrix[x][y]._alpha >= 230) {
                 
                 int max_alpha = 255;
@@ -240,6 +245,9 @@ int main()
     sf::RectangleShape background(sf::Vector2f(backgroundRect.width, backgroundRect.height));
     background.setFillColor(sf::Color::Black);
 
+    //int loops_counter = 0;
+    //setFramerateLimit
+    window.setFramerateLimit(10);
     while (window.isOpen())
     {
         sf::Event event;
@@ -254,7 +262,14 @@ int main()
                 && event.key.code == sf::Keyboard::P)
             {
                 cout << "Pause" << endl;
-                std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+                
+                // wait for another push to P-button
+                while (true) {
+                    window.pollEvent(event);
+                    if (event.type == sf::Event::KeyPressed
+                        && event.key.code == sf::Keyboard::P)
+                        break;
+                }
             }
         }
 
@@ -268,7 +283,23 @@ int main()
         // updating matrix of Letters
         moveMatrixOfLetters(matrix);
         createNewLaeyer(matrix);
-        makeAlphaRain(matrix);        
+        makeAlphaRain(matrix);
+
+        // This code is for screenshots:
+        //if (loops_counter % 100 == 0) {
+        //    sf::Texture texture;
+        //    texture.create(window.getSize().x, window.getSize().y);
+        //    texture.update(window);
+        //    string filename = "PrtSc";
+        //    filename += std::to_string(loops_counter);
+        //    filename += ".jpg";
+        //    cout << filename << endl;
+        //    if (texture.copyToImage().saveToFile(filename))
+        //    {
+        //        std::cout << "screenshot saved to " << filename << std::endl;
+        //    }
+        //}
+        //loops_counter++;
     }
 
     return 0;
