@@ -1,0 +1,9 @@
+.vs/*
+
+Debug/*
+!Debug/sfml-audio-d-2.dll
+!Debug/sfml-audio-d-2.dll
+!Debug/sfml-audio-d-2.dll
+!Debug/sfml-audio-d-2.dll
+
+src/Debug
