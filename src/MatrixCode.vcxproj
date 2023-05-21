@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Letter.cpp" />
     <ClCompile Include="MatrixCode.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +157,9 @@
     <Image Include="PrtSc400.jpg" />
     <Image Include="PrtSc500.jpg" />
     <Image Include="Run Example (683 x 384).gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Letter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
