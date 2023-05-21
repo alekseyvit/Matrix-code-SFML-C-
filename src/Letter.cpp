@@ -19,19 +19,7 @@ Letter::Letter() {
     _text.move(_pos_x, _pos_y);
 }
 
-Letter::Letter(const Letter& other) {
-    _letter = other._letter;
-    _size = other._size;
-    _size_x = other._size_x;
-    _size_y = other._size_y;
-    _alpha = other._alpha;
-    //_live_time = other._live_time;
-
-    // position will stay the same
-    //_pos_x = other._pos_x;
-    //_pos_y = other._pos_y;
-
-    _text = other._text;
+void Letter::moveDown() {
     _text.move(0, _size_y);
 }
 

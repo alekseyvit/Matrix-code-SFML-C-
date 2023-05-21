@@ -10,7 +10,7 @@ class Matrix
     std::vector<std::vector<Letter>> _matrix;
     int _maxAlpha = 255;
     int _alphaInitThreshold = 230;
-    int _alphaThreshold = 240;
+    int _alphaRedThreshold = 240;
     int _alphaStep = 25; // насколько уменьшается яркость
 public:
     Matrix(int X, int Y);

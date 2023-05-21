@@ -29,7 +29,7 @@ private:
     sf::Text _text;
 public:
     Letter();
-    Letter(const Letter& other);
+    Letter(const Letter& other) = default;
     Letter(Letter&& other) noexcept = default;
 
     Letter& operator=(const Letter& other) = default;
@@ -41,6 +41,8 @@ public:
     sf::Text& text();
     int& posX();
     int& posY();
+
+    void moveDown();
 
     void update_text();
     void drawFallingLetter(sf::RenderWindow& window) const;
