@@ -8,39 +8,15 @@
 class Matrix
 {
     std::vector<std::vector<Letter>> _matrix;
-
+    int _maxAlpha = 255;
+    int _alphaThreshold = 230;
+    int _alphaStep = 25; // насколько уменьшается яркость
 public:
     Matrix(int X, int Y);
 
     // Initialization of start Letters
-    //for (size_t x = 0; x < matrix.size(); x++) {
-    //    for (size_t y = 0; y < matrix[0].size(); y++) {
-    //        // init alpha chanell
-    //        if (matrix[x][y]._alpha >= 230) {
-    //            
-    //            int max_alpha = 255;
-    //            for (int _y = y; _y >= 0; _y--) {
-    //                matrix[x][_y]._alpha = max_alpha;
-    //                matrix[x][_y]._text.setFillColor(sf::Color(255, 0, 0, max_alpha));
-    //                //cout << x << ", " << _y << endl;
-    //                if (max_alpha - 25 >= 0)
-    //                    max_alpha -= 25;
-    //                else
-    //                    max_alpha = 0;
-    //            }
-    //        }
-    //        
-    //        // init position of each letter
-    //        matrix[x][y]._pos_x = x * matrix[x][y]._size_x;
-    //        matrix[x][y]._pos_y = y * matrix[x][y]._size_y;
-
-    //        // init letter
-    //        // matrix[x][y]._letter = 'a' + rand() % ALPHABET_CAPACITY;
-
-    //        matrix[x][y].update_text();
-    //    }
-    //}
-
+    void initialization();
+    
     void drawMatrix(sf::RenderWindow& window) const;
     void moveMatrixOfLetters();
 

@@ -32,7 +32,7 @@ int main()
 
 
     // Initialization of start Letters
-    
+    matrix.initialization();
 
     // init one collumn
     /*int collumn_number = matrix.size() - 1;

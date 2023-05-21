@@ -36,6 +36,10 @@ public:
 
     int getSizeX();
     int getSizeY();
+    int& alpha();
+    sf::Text& text();
+    int& posX();
+    int& posY();
 
     void update_text();
     void drawFallingLetter(sf::RenderWindow& window) const;

@@ -43,6 +43,22 @@ int Letter::getSizeY() {
     return _size_y;
 }
 
+int& Letter::alpha() {
+    return _alpha;
+}
+
+sf::Text& Letter::text() {
+    return _text;
+}
+
+int& Letter::posX() {
+    return _pos_x;
+}
+
+int& Letter::posY() {
+    return _pos_y;
+}
+
 void Letter::update_text() {
     //_text.setCharacterSize(_size);
     sf::Color tmp = _text.getFillColor();
