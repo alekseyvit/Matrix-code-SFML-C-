@@ -29,10 +29,10 @@ class Letter {
 public:
     Letter();
     Letter(const Letter& other);
-    Letter(Letter&& other) = default;
+    Letter(Letter&& other) noexcept = default;
 
-    Letter& operator=(const Letter& other);
-    Letter& operator=(Letter&& other) noexcept;
+    Letter& operator=(const Letter& other) = default;
+    Letter& operator=(Letter&& other) noexcept = default;
 
     int getSizeX();
     int getSizeY();
