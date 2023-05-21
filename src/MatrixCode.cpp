@@ -11,6 +11,9 @@
 using namespace sf;
 using namespace std;
 
+sf::Text initPromptText();
+sf::RectangleShape initPromptRectangle(const sf::Text& esc_text);
+
 int main()
 {
     //sf::RenderWindow window(sf::VideoMode(1366 / 2, 768 / 2), "Falling Red Lines");
@@ -33,30 +36,9 @@ int main()
 
     // Initialization of start Letters
     matrix.initialization();
-
-    // init one column
-    //int collumn_number = matrix.size() - 1;
-    //for (int y = 0; y < matrix[0].size(); y++) {
-    //    matrix[collumn_number][y]._alpha = 255;
-    //    matrix[collumn_number][y]._letter = 'a' + y;
-    //    matrix[collumn_number][y].update_text();
-    //}
     
-    // text that must be shown all the time
-    // Text:
-    //esc - exit\n
-    //p - pause
-    Text esc_text;
-    esc_text.setFont(Letter::_font);
-    esc_text.setString("esc - exit\np - pause");
-    const int infoSize = 15;
-    esc_text.setCharacterSize(infoSize);
-    esc_text.setFillColor(sf::Color(0, 255, 0, 128));
-
-    // background for esc_text
-    sf::FloatRect backgroundRect = esc_text.getLocalBounds();
-    sf::RectangleShape background(sf::Vector2f(backgroundRect.width, backgroundRect.height));
-    background.setFillColor(sf::Color::Black);
+    sf::Text escText = initPromptText();
+    sf::RectangleShape background = initPromptRectangle(escText);
 
     //int loops_counter = 0;
     //setFramerateLimit
@@ -88,8 +70,8 @@ int main()
 
         window.clear();
         matrix.drawMatrix(window);
-        window.draw(background, esc_text.getTransform());
-        window.draw(esc_text);
+        window.draw(background, escText.getTransform());
+        window.draw(escText);
         window.display();
         //std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
@@ -116,4 +98,26 @@ int main()
     }
 
     return 0;
+}
+
+sf::Text initPromptText() {
+    // text that must be shown all the time
+    // Text:
+    //esc - exit\n
+    //p - pause
+    Text esc_text;
+    esc_text.setFont(Letter::_font);
+    esc_text.setString("esc - exit\np - pause");
+    const int infoSize = 15;
+    esc_text.setCharacterSize(infoSize);
+    esc_text.setFillColor(sf::Color(0, 255, 0, 128));
+    return esc_text;
+}
+
+sf::RectangleShape initPromptRectangle(const sf::Text& esc_text) {
+    // background for esc_text
+    sf::FloatRect backgroundRect = esc_text.getLocalBounds();
+    sf::RectangleShape background(sf::Vector2f(backgroundRect.width, backgroundRect.height));
+    background.setFillColor(sf::Color::Black);
+    return background;
 }
