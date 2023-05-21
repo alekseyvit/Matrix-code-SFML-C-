@@ -34,13 +34,13 @@ int main()
     // Initialization of start Letters
     matrix.initialization();
 
-    // init one collumn
-    /*int collumn_number = matrix.size() - 1;
-    for (int y = 0; y < matrix[0].size(); y++) {
-        matrix[collumn_number][y]._alpha = 255;
-        matrix[collumn_number][y]._letter = 'a' + y;
-        matrix[collumn_number][y].update_text();
-    }
+    // init one column
+    //int collumn_number = matrix.size() - 1;
+    //for (int y = 0; y < matrix[0].size(); y++) {
+    //    matrix[collumn_number][y]._alpha = 255;
+    //    matrix[collumn_number][y]._letter = 'a' + y;
+    //    matrix[collumn_number][y].update_text();
+    //}
     
     // text that must be shown all the time
     // Text:
@@ -49,7 +49,8 @@ int main()
     Text esc_text;
     esc_text.setFont(Letter::_font);
     esc_text.setString("esc - exit\np - pause");
-    esc_text.setCharacterSize(matrix[0][0]._size);
+    const int infoSize = 15;
+    esc_text.setCharacterSize(infoSize);
     esc_text.setFillColor(sf::Color(0, 255, 0, 128));
 
     // background for esc_text
@@ -86,16 +87,16 @@ int main()
         }
 
         window.clear();
-        drawMatrix(matrix, window);
+        matrix.drawMatrix(window);
         window.draw(background, esc_text.getTransform());
         window.draw(esc_text);
         window.display();
         //std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
         // updating matrix of Letters
-        moveMatrixOfLetters(matrix);
-        createNewLayer(matrix);
-        makeAlphaRain(matrix);
+        matrix.moveMatrixOfLetters();
+        matrix.createNewLayer();
+        matrix.makeAlphaRain();
 
         // This code is for screenshots:
         //if (loops_counter % 100 == 0) {
@@ -112,7 +113,7 @@ int main()
         //    }
         //}
         //loops_counter++;
-    }*/
+    }
 
     return 0;
 }

@@ -13,8 +13,9 @@ const int MAX_LIFE_TIME_SEC = 30;
 const int RAIN_LENGTH = 10;
 
 class Letter {
+public:
     static sf::Font _font;
-
+private:
     char _letter = 'a' + rand() % ALPHABET_CAPACITY;;
     int _size = 15;// 15;
     int _size_x = 12;//12;// 25;
