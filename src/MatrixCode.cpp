@@ -87,14 +87,14 @@ int main()
 
     Letter one_letter;
     int numLettersX = 0;
-    if (window.getSize().x % one_letter._size_x == 0.0)
-        numLettersX = window.getSize().x / one_letter._size_x;
+    if (window.getSize().x % one_letter.getSizeX() == 0.0)
+        numLettersX = window.getSize().x / one_letter.getSizeX();
     else
-        numLettersX = window.getSize().x / one_letter._size_x + 1;
+        numLettersX = window.getSize().x / one_letter.getSizeX() + 1;
     
     vector<vector<Letter>> matrix(numLettersX);
     for (auto it = matrix.begin(); it < matrix.end(); ++it) {
-        it->resize(window.getSize().y / one_letter._size_y);
+        it->resize(window.getSize().y / one_letter.getSizeY());
     }
 
     // Initialization of start Letters

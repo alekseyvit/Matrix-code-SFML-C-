@@ -12,7 +12,7 @@ const size_t ALPHABET_CAPACITY = 25;
 const int MAX_LIFE_TIME_SEC = 30;
 const int RAIN_LENGTH = 10;
 
-struct Letter {
+class Letter {
     static sf::Font _font;
 
     char _letter = 'a' + rand() % ALPHABET_CAPACITY;;
@@ -26,9 +26,17 @@ struct Letter {
     int _pos_y = 0;
 
     sf::Text _text;
-
+public:
     Letter();
     Letter(const Letter& other);
+    Letter(Letter&& other) = default;
+
+    Letter& operator=(const Letter& other);
+    Letter& operator=(Letter&& other) noexcept;
+
+    int getSizeX();
+    int getSizeY();
+
     void update_text();
     void drawFallingLetter(sf::RenderWindow& window) const;
     //void moveFallingLetter(sf::RenderWindow& window, float sec);

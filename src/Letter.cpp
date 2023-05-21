@@ -35,6 +35,14 @@ Letter::Letter(const Letter& other) {
     _text.move(0, _size_y);
 }
 
+int Letter::getSizeX() {
+    return _size_x;
+}
+
+int Letter::getSizeY() {
+    return _size_y;
+}
+
 void Letter::update_text() {
     //_text.setCharacterSize(_size);
     sf::Color tmp = _text.getFillColor();
