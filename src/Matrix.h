@@ -7,6 +7,11 @@
 
 const int RAIN_LENGTH = 15;
 
+//template <typename T>
+//using typeChecker = static_assert(std::is_base_of_v<iLetter, T>, "sorry :(");
+
+#define typeChecker static_assert(std::is_base_of_v<iLetter, T>, "sorry :(");
+
 template <typename T>
 class Matrix
 {
@@ -31,6 +36,7 @@ public:
 
 template <typename T>
 Matrix<T>::Matrix(int X, int Y) {
+    typeChecker;
     _matrix.resize(Y);
     for (auto it = _matrix.begin(); it < _matrix.end(); ++it) {
         it->resize(X);
@@ -39,6 +45,7 @@ Matrix<T>::Matrix(int X, int Y) {
 
 template <typename T>
 void Matrix<T>::initialization() {
+    typeChecker;
     for (size_t y = 0; y < _matrix.size(); ++y) {
         for (size_t x = 0; x < _matrix[0].size(); ++x) {
             // init alpha chanell
@@ -68,6 +75,7 @@ void Matrix<T>::initialization() {
 
 template <typename T>
 void Matrix<T>::drawMatrix(sf::RenderWindow& window) const {
+    typeChecker;
     for (auto& line : _matrix) {
         for (auto& el : line) {
             el.drawFallingLetter(window);
@@ -77,6 +85,7 @@ void Matrix<T>::drawMatrix(sf::RenderWindow& window) const {
 
 template <typename T>
 void Matrix<T>::moveMatrixOfLetters() {
+    typeChecker;
     // TODO make optimization here by moving the whole line? 
     for (size_t y = _matrix.size() - 1; y >= 1; --y) {
         for (size_t x = 0; x < _matrix[0].size(); ++x) {
@@ -89,6 +98,7 @@ void Matrix<T>::moveMatrixOfLetters() {
 
 template <typename T>
 void Matrix<T>::createNewLayer() {
+    typeChecker;
     //cout << "createNewLayer" << endl;
     int sizeX = _matrix[0][0].getSizeX();
     for (size_t x = 0; x < _matrix[0].size(); ++x) {
@@ -108,6 +118,7 @@ void Matrix<T>::createNewLayer() {
 
 template <typename T>
 void Matrix<T>::makeAlphaRain() {
+    typeChecker;
     //cout << "makeAlphaRain" << endl;
     for (size_t y = 0; y < _matrix.size(); ++y) {
         for (int x = _matrix[0].size() - 1; x >= 0; --x) {
