@@ -6,6 +6,8 @@
 #include <thread>
 #include <vector>
 #include <string>
+#include <cassert>
+
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -32,8 +34,7 @@ int main()
         numLettersX = window.getSize().x / one_letter.getSizeX() + 1;
     
     Matrix<Letter> matrix(numLettersX, window.getSize().y / one_letter.getSizeY());
-
-
+    
     // Initialization of start Letters
     matrix.initialization();
     
