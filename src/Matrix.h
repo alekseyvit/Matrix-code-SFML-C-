@@ -5,7 +5,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-const int RAIN_LENGTH = 10;
+const int RAIN_LENGTH = 15;
 
 template <typename T>
 class Matrix

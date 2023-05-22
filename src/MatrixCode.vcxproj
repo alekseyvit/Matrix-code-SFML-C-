@@ -148,7 +148,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Letter.cpp" />
-    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixCode.cpp" />
   </ItemGroup>
   <ItemGroup>

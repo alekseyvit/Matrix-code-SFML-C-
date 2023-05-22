@@ -10,7 +10,7 @@ using namespace std;
 
 //const float GRAVITY = 9.8f;
 //const float MAX_DELTA_Y = 2.150f;
-const size_t ALPHABET_CAPACITY = 25;
+const size_t ALPHABET_CAPACITY = 26;
 const int MAX_LIFE_TIME_SEC = 30;
 
 class Letter : public iLetter {
