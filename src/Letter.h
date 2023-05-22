@@ -1,5 +1,7 @@
 #pragma once
 
+#include "iLetter.h"
+
 #include <chrono>
 #include <SFML/Graphics.hpp>
 
@@ -10,9 +12,8 @@ using namespace std;
 //const float MAX_DELTA_Y = 2.150f;
 const size_t ALPHABET_CAPACITY = 25;
 const int MAX_LIFE_TIME_SEC = 30;
-const int RAIN_LENGTH = 10;
 
-class Letter {
+class Letter : public iLetter {
 public:
     static sf::Font _font;
 private:
@@ -29,14 +30,9 @@ private:
     sf::Text _text;
 public:
     Letter();
-    Letter(const Letter& other) = default;
-    Letter(Letter&& other) noexcept = default;
 
-    Letter& operator=(const Letter& other) = default;
-    Letter& operator=(Letter&& other) noexcept = default;
-
-    int getSizeX();
-    int getSizeY();
+    int getSizeX() const;
+    int getSizeY() const;
     int& alpha();
     sf::Text& text();
     int& posX();

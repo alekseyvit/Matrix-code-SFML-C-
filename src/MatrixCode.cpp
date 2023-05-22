@@ -31,7 +31,7 @@ int main()
     else
         numLettersX = window.getSize().x / one_letter.getSizeX() + 1;
     
-    Matrix matrix(numLettersX, window.getSize().y / one_letter.getSizeY());
+    Matrix<Letter> matrix(numLettersX, window.getSize().y / one_letter.getSizeY());
 
 
     // Initialization of start Letters

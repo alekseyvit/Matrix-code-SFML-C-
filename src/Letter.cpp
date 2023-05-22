@@ -23,11 +23,11 @@ void Letter::moveDown() {
     _text.move(0, _sizeY);
 }
 
-int Letter::getSizeX() {
+int Letter::getSizeX() const {
     return _sizeX;
 }
 
-int Letter::getSizeY() {
+int Letter::getSizeY() const {
     return _sizeY;
 }
 

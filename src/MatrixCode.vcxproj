@@ -160,6 +160,7 @@
     <Image Include="Run Example (683 x 384).gif" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="iLetter.h" />
     <ClInclude Include="Letter.h" />
     <ClInclude Include="Matrix.h" />
   </ItemGroup>
