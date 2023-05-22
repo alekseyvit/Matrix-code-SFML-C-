@@ -18,13 +18,13 @@ public:
 private:
     char _letter = 'a' + rand() % ALPHABET_CAPACITY;;
     int _size = 15;// 15;
-    int _size_x = 12;//12;// 25;
-    int _size_y = 12;//12;// 25;
+    int _sizeX = 12;//12;// 25;
+    int _sizeY = 12;//12;// 25;
     int _alpha = rand() % 255;
     //int _live_time = rand() % MAX_LIFE_TIME_SEC;
 
-    int _pos_x = 0;
-    int _pos_y = 0;
+    int _posX = 0;
+    int _posY = 0;
 
     sf::Text _text;
 public:

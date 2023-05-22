@@ -20,15 +20,15 @@ Letter::Letter() {
 }
 
 void Letter::moveDown() {
-    _text.move(0, _size_y);
+    _text.move(0, _sizeY);
 }
 
 int Letter::getSizeX() {
-    return _size_x;
+    return _sizeX;
 }
 
 int Letter::getSizeY() {
-    return _size_y;
+    return _sizeY;
 }
 
 int& Letter::alpha() {
