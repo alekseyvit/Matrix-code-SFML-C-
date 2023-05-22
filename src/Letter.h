@@ -44,7 +44,7 @@ public:
 
     void moveDown();
 
-    void update_text();
+    void updateText();
     void drawFallingLetter(sf::RenderWindow& window) const;
     //void moveFallingLetter(sf::RenderWindow& window, float sec);
 };

@@ -30,7 +30,7 @@ void Matrix::initialization() {
             // init letter
             // matrix[x][y]._letter = 'a' + rand() % ALPHABET_CAPACITY;
 
-            _matrix[y][x].update_text();
+            _matrix[y][x].updateText();
         }
     }
 }
@@ -64,7 +64,7 @@ void Matrix::createNewLayer() {
         _matrix[y][x].posX() = x * sizeX;
         _matrix[y][x].posY() = 0; // 0
 
-        _matrix[y][x].update_text();
+        _matrix[y][x].updateText();
         if (_matrix[y][x].alpha() >= _alphaRedThreshold) {
             _matrix[y][x].alpha() = _maxAlpha;
             _matrix[y][x].text().setFillColor(sf::Color(_maxAlpha, 0, 0, _matrix[y][x].alpha()));//RED

@@ -16,7 +16,7 @@ Letter::Letter() {
     _text.setFillColor(sf::Color(0, 255, 0, _alpha));
     _text.setString(_letter);
     _text.setPosition(0, 0);
-    _text.move(_pos_x, _pos_y);
+    _text.move(_posX, _posY);
 }
 
 void Letter::moveDown() {
@@ -40,14 +40,14 @@ sf::Text& Letter::text() {
 }
 
 int& Letter::posX() {
-    return _pos_x;
+    return _posX;
 }
 
 int& Letter::posY() {
-    return _pos_y;
+    return _posY;
 }
 
-void Letter::update_text() {
+void Letter::updateText() {
     //_text.setCharacterSize(_size);
     sf::Color tmp = _text.getFillColor();
     tmp.a = _alpha;
@@ -55,7 +55,7 @@ void Letter::update_text() {
     _text.setOutlineColor(sf::Color(0, 0, 0, 0));//TEMP
     _text.setString(_letter);
     _text.setPosition(0, 0);
-    _text.move(_pos_x, _pos_y);
+    _text.move(_posX, _posY);
 }
 
 void Letter::drawFallingLetter(sf::RenderWindow& window) const {
